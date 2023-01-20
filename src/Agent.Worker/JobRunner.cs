@@ -204,6 +204,12 @@ namespace Microsoft.VisualStudio.Services.Agent.Worker
                     jobContext.SetVariable("GIT_TERMINAL_PROMPT", "0");
                 }
 
+                if (AgentKnobs.UseMSALLibrary.GetValue(jobContext).AsBoolean())
+                {
+                    jobContext.SetVariable("USE_MSAL", "true");
+                }
+                
+                // jobContext.SetVariable("USE_MSAL", "true");
                 // Setup TEMP directories
                 _tempDirectoryManager = HostContext.GetService<ITempDirectoryManager>();
                 _tempDirectoryManager.InitializeTempDirectory(jobContext);

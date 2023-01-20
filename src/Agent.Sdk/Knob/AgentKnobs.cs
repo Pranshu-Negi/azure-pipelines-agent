@@ -386,6 +386,15 @@ namespace Agent.Sdk.Knob
             new EnvironmentKnobSource(ContinueAfterCancelProcessTreeKillAttemptVariableName),
             new BuiltInDefaultKnobSource("false"));
 
+        public const string UseMSALLibraryVariableName = "VSTSAGENT_USE_MSAL_LIBRARY";
+
+        public static Knob UseMSALLibrary = new Knob(
+            nameof(UseMSALLibrary),
+            "When enabled, the agent uses the MSAL library while running tasks associated with a job",
+            new RuntimeKnobSource(UseMSALLibraryVariableName),
+            new EnvironmentKnobSource(UseMSALLibraryVariableName),
+            new BuiltInDefaultKnobSource("false"));
+
         public static readonly Knob UseNode = new Knob(
             nameof(UseNode),
             "Forces the agent to use different version of Node if when configured runner is not available. Possible values: LTS - make agent use latest LTS version of Node; UPGRADE - make agent use next available version of Node",
